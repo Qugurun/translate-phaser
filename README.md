@@ -63,19 +63,19 @@ Create JSON files for each language in the `assets/locale/` folder:
 }
 ```
 
-You can generate translation files from a `*.csv` file by running `cvs2json.js`. Copy the `cvs2json.js` file into your project and edit it to specify the path to the folder with the `*.csv` file and where the resulting `*.json` files will be saved.
+You can generate translation files from a `*.csv` file by running `csv2json.js`. Copy the `csv2json.js` file into your project and edit it to specify the path to the folder with the `*.csv` file and where the resulting `*.json` files will be saved.
 
 Run the script:
 
 ```bash
-node cvs2json.js
+node csv2json.js
 ```
 
 - For convenience, add a command to the `scripts` section of your `package.json` to generate translation files.
   
 ```
 "scripts": {
-    "translate": "node cvs2json.js"
+    "translate": "node csv2json.js"
 }
 ```
 
