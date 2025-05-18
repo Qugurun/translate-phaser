@@ -1,23 +1,27 @@
+[![Page Views Count](https://badges.toozhao.com/badges/01JVJ9DZTC41VE8M88F7J1M5CA/green.svg)](https://badges.toozhao.com/stats/01JVJ9DZTC41VE8M88F7J1M5CA "Get your own page views count badge on badges.toozhao.com")
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/Qugurun/translate-phaser/blob/main/README.md)
+[![ru](https://img.shields.io/badge/lang-ru-green.svg)](https://github.com/Qugurun/translate-phaser/blob/main/README.ru.md)
+
 # **Translate Phaser Plugin**
 
-**TranslatePlugin** — это плагин для **Phaser 3 и 4**, который упрощает локализацию текста (`Text` и `BitmapText`) в вашей игре. Поддерживает динамическое переключение языков и автоматическое обновление текста.
+**TranslatePlugin** is a plugin for **Phaser 3 and 4** that simplifies localization of text (`Text` and `BitmapText`) in your game. It supports dynamic language switching and automatic text updates.
 
-**Установка:**
+**Installation:**
 
 ```bash
 npm install translate-phaser
 ```
 
 ---
-### **Подключение плагина**
+### **Plugin Integration**
 
-Добавьте плагин в конфигурацию вашей игры (`GameConfig`):
+Add the plugin to your game configuration (`GameConfig`):
 
 ```javascript
 import TranslatePlugin from "translate-phaser";
 
 const config = {
-    // ... другие настройки Phaser
+    // ... other Phaser settings
     plugins: {
         global: [
             {
@@ -34,12 +38,12 @@ const config = {
 };
 ```
 
-- В параметре `dir` укажите путь до папки с файлами перевода.
-### **Подготовка переводов**
+- In the `dir` parameter, specify the path to the folder with translation files.
+### **Preparing Translations**
 
-Создайте JSON-файлы для каждого языка в папке `assets/locale/`:
+Create JSON files for each language in the `assets/locale/` folder:
 
-**`en.json`** (английский):
+**`en.json`** (English):
 
 ```json
 {
@@ -49,7 +53,7 @@ const config = {
 }
 ```
 
-**`ru.json`** (русский):
+**`ru.json`** (Russian):
 
 ```json
 {
@@ -59,113 +63,113 @@ const config = {
 }
 ```
 
-Файлы перевода можно получить из `*.csv` файла, для этого запустите `cvs2json.js`. Скопируйте файл `cvs2json.js` в свой проект, отредактируйте, указав путь до папки с файлом `*.csv` и куда будут сохраняться файлы `*.json`.
+You can generate translation files from a `*.csv` file by running `cvs2json.js`. Copy the `cvs2json.js` file into your project and edit it to specify the path to the folder with the `*.csv` file and where the resulting `*.json` files will be saved.
 
-Запустите скрипт:
+Run the script:
 
 ```bash
 node cvs2json.js
 ```
 
-- для удобства работы добавьте в ваш `package.json` в секцию `scripts` команду для формирования файлов перевода.
+- For convenience, add a command to the `scripts` section of your `package.json` to generate translation files.
   
-```json
-   "scripts": {
-        "translate": "node cvs2json.js"
-    }
+```
+"scripts": {
+    "translate": "node cvs2json.js"
+}
 ```
 
-CSV файл имеет вид: Название первого столбца важно чтобы был именно `key`, названия остальных столбцов являются идентификаторами языка и итоговыми именами для файлов перевода.
+The CSV file should look like this: The name of the first column must be `key`, the names of the other columns are language identifiers and will be used as the resulting translation file names.
 
 |key|ru|en|
 |---|---|---|
 |{settings}|Настройки|Settings|
 |{game}|Игра|Game|
 |{exit}|Выход|Exit|
-|Пример файла CSV:|||
+|Example CSV file:|||
 
-[Пример таблицы](https://docs.google.com/spreadsheets/d/11lQEBhEIqXbmaXeNp7G18mlrq2J0pNZCpmwcyrIc_wk/edit?usp=sharing "https://docs.google.com/spreadsheets/d/11lQEBhEIqXbmaXeNp7G18mlrq2J0pNZCpmwcyrIc_wk/edit?usp=sharing")
+[Example table](https://docs.google.com/spreadsheets/d/11lQEBhEIqXbmaXeNp7G18mlrq2J0pNZCpmwcyrIc_wk/edit?usp=sharing "https://docs.google.com/spreadsheets/d/11lQEBhEIqXbmaXeNp7G18mlrq2J0pNZCpmwcyrIc_wk/edit?usp=sharing")
 
-Вы можете попытаться получить автоматический перевод через гугл таблицы, введя формулу:
+You can try to get an automatic translation via Google Sheets by entering the formula:
 
 ![google_table.gif](https://github.com/Qugurun/translate-phaser/blob/main/google_table.gif)
 
-Чтобы слова "не гуляли регистром".
+To control the case of words:
 
-Преобразует первые буквы всех слов в заглавные.  
+Capitalize the first letter of each word.  
 `=PROPER(GOOGLETRANSLATE(A1;"en";"ru"))`
 
-Преобразует символы заданной строки в нижний регистр.  
+Convert all characters in the string to lowercase.  
 `=LOWER(GOOGLETRANSLATE(A1;"en";"ru"))`
 
-Преобразует символы заданной строки в верхний регистр.  
+Convert all characters in the string to uppercase.  
 `=UPPER(GOOGLETRANSLATE(A1;"en";"ru"))`
-### **Начало работы**
+### **Getting Started**
 
-В методе `preload` загрузите стартовый язык:
+In the `preload` method, load the initial language:
 
 ```javascript
-preload() {
-    this.load.json("en", "assets/locale/en.json");
+preload() {
+    this.load.json("en", "assets/locale/en.json");
 }
 ```
 
- В методе `create` установите язык и создайте текст с ключом:
+In the `create` method, set the language and create text with a key:
 
 ```javascript
-create() {
-    this.translate.setLanguage("en");
-    const myText = this.add.text(x, y, "{hello}", { fontSize: "32px" });
-    const myBitmapText = this.add.bitmapText(x, y, "myFont", "{key}", 32);
+create() {
+    this.translate.setLanguage("en");
+    const myText = this.add.text(x, y, "{hello}", { fontSize: "32px" });
+    const myBitmapText = this.add.bitmapText(x, y, "myFont", "{key}", 32);
 }
 ```
 
-## **Документация**
+## **Documentation**
 
-Для смены языка используйте:
+To change the language, use:
 
 ```javascript
 this.translate.setLanguage("ru");
 ```
 
-- Если файл перевода не был загружен ранее, он загрузится автоматически, и все текстовые объекты обновятся.
+- If the translation file was not loaded previously, it will be loaded automatically and all text objects will be updated.
 
-Получить перевод ключа: 
-- Текст вернётся на текущем установленном языке
+Get the translation for a key: 
+- The text will be returned in the currently set language
 
 ```javascript
 console.log(this.translate.getTranslate("{myKey}"));
 ```
 
-Узнать текущий установленный язык:
+Get the currently set language:
 
 ```javascript
 console.log(this.translate.getLanguage());
 ```
 
-Используйте несколько ключей и комбинируйте их с обычным текстом:
+Use multiple keys and combine them with regular text:
 
 ```js
-const myText = this.add.text(x, y, "{key1} Привет {key2}", {fontSize: "50px"});
-const myBitmapText = this.add.bitmapText(x, y, "myFont", "{key1} Привет {key2}", 32);
+const myText = this.add.text(x, y, "{key1} Hello {key2}", {fontSize: "50px"});
+const myBitmapText = this.add.bitmapText(x, y, "myFont", "{key1} Hello {key2}", 32);
 ```
 
-Установка нового ключа:
+Set a new key:
 
 ```javascript
 myText.setTextKey("{newKey}");
 myBitmapText.setTextKey("{newKey}");
 ```
 
-Установка максимальной ширины текстового блока в px.
+Set the maximum width of the text block in px.
 
 ```javascript
 myText.setFitWidth(200);
 myBitmapText.setFitWidth(200);
 ```
 
-- Текстовый объект автоматически подберёт размер текста чтобы максимально вписаться в указанный размеры по ширине с учётом расстояния между символами.
+- The text object will automatically adjust the text size to fit the specified width, taking into account the spacing between characters.
 
 ---
 
-MIT © [Qugurun](https://github.com/Qugurun) 
+MIT © [Qugurun](https://github.com/Qugurun) 
