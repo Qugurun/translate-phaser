@@ -172,8 +172,4 @@ myBitmapText.setFitWidth(200);
 
 ---
 
-<<<<<<< HEAD
 MIT © [Qugurun](https://github.com/Qugurun) 
-=======
-MIT © [Qugurun](https://github.com/Qugurun) 
->>>>>>> b941f94d4b74cf3416b048aa03828499ae4f4165
