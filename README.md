@@ -1,3 +1,5 @@
+[![Page Views Count](https://badges.toozhao.com/badges/01JVJ9DZTC41VE8M88F7J1M5CA/green.svg)](https://badges.toozhao.com/stats/01JVJ9DZTC41VE8M88F7J1M5CA "Get your own page views count badge on badges.toozhao.com")
+
 # **Translate Phaser Plugin**
 
 **TranslatePlugin** — это плагин для **Phaser 3 и 4**, который упрощает локализацию текста (`Text` и `BitmapText`) в вашей игре. Поддерживает динамическое переключение языков и автоматическое обновление текста.
