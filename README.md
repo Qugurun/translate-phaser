@@ -86,7 +86,8 @@ The CSV file should look like this: The name of the first column must be `key`, 
 |{settings}|Настройки|Settings|
 |{game}|Игра|Game|
 |{exit}|Выход|Exit|
-|Example CSV file:|||
+
+Example CSV file:
 
 [Example table](https://docs.google.com/spreadsheets/d/11lQEBhEIqXbmaXeNp7G18mlrq2J0pNZCpmwcyrIc_wk/edit?usp=sharing "https://docs.google.com/spreadsheets/d/11lQEBhEIqXbmaXeNp7G18mlrq2J0pNZCpmwcyrIc_wk/edit?usp=sharing")
 
