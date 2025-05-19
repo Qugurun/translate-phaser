@@ -1,6 +1,6 @@
 /**
  * Plugin for text and bitmapText translate in Phaser.
- * Version: 0.0.8
+ * Version: 0.0.9
  * Author: Qugurun
  * License: MIT
  */
@@ -16,7 +16,8 @@ export default class TranslatePlugin extends Phaser.Plugins.BasePlugin {
         this._translation = {};
         this.config = []
         this._current = null;
-
+		
+		// https://docs.phaser.io/phaser/concepts/gameobjects/text
         const prototypeText = Phaser.GameObjects.GameObjectFactory.prototype.text;
         Phaser.GameObjects.GameObjectFactory.prototype.text = function (x, y, text, style) {
             const object = prototypeText.call(this, x, y, text, style);
@@ -144,10 +145,9 @@ export default class TranslatePlugin extends Phaser.Plugins.BasePlugin {
         this._current = value;
 
         let scene = this.game.scene.scenes[0];
-
+        scene.load.setPath(this.dir);
         if (scene.cache.json.get(value) == undefined) {
-            const fullPath = path.join(this.dir, value + ".json");
-            scene.load.json(value, fullPath);
+            scene.load.json(value, `${value}.json`);
             scene.load.on('complete', () => {
                 this._translation = scene.cache.json.get(value);
                 this._setTextKey();
