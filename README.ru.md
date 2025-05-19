@@ -86,7 +86,8 @@ CSV файл имеет вид: Название первого столбца �
 |{settings}|Настройки|Settings|
 |{game}|Игра|Game|
 |{exit}|Выход|Exit|
-|Пример файла CSV:|||
+
+Пример файла CSV:
 
 [Пример таблицы](https://docs.google.com/spreadsheets/d/11lQEBhEIqXbmaXeNp7G18mlrq2J0pNZCpmwcyrIc_wk/edit?usp=sharing "https://docs.google.com/spreadsheets/d/11lQEBhEIqXbmaXeNp7G18mlrq2J0pNZCpmwcyrIc_wk/edit?usp=sharing")
 
