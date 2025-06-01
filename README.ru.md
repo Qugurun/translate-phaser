@@ -2,6 +2,8 @@
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/Qugurun/translate-phaser/blob/main/README.md)
 [![ru](https://img.shields.io/badge/lang-ru-green.svg)](https://github.com/Qugurun/translate-phaser/blob/main/README.ru.md)
 
+[![https://t.me/phaser_community](https://img.shields.io/badge/Phaser-Community_RU-blue?logo=telegram&logoColor=ffffff)](https://t.me/phaser_community "@phaser_community")
+
 # **Translate Phaser Plugin**
 
 **TranslatePlugin** — это плагин для **Phaser 3 и 4**, который упрощает локализацию текста (`Text` и `BitmapText`) в вашей игре. Поддерживает динамическое переключение языков и автоматическое обновление текста.
