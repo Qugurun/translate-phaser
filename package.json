@@ -1,0 +1,10 @@
+{
+  "name": "translate-phaser",
+  "version": "0.0.10",       
+  "description": "Plugin for adding multilingual support (text and bitmapText) to Phaser 3.x-4.x",
+  "main": "index.js",   
+  "scripts": {},
+  "author": "Qugurun",
+  "license": "MIT",
+  "keywords": ["translate", "multilingual", "phaser"]
+}
