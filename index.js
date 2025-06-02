@@ -1,6 +1,6 @@
 /**
  * Plugin for text and bitmapText translate in Phaser.
- * Version: 0.0.9
+ * Version: 0.0.10
  * Author: Qugurun
  * License: MIT
  */
@@ -16,8 +16,8 @@ export default class TranslatePlugin extends Phaser.Plugins.BasePlugin {
         this._translation = {};
         this.config = []
         this._current = null;
-		
-		// https://docs.phaser.io/phaser/concepts/gameobjects/text
+
+        // https://docs.phaser.io/phaser/concepts/gameobjects/text
         const prototypeText = Phaser.GameObjects.GameObjectFactory.prototype.text;
         Phaser.GameObjects.GameObjectFactory.prototype.text = function (x, y, text, style) {
             const object = prototypeText.call(this, x, y, text, style);
@@ -83,6 +83,8 @@ export default class TranslatePlugin extends Phaser.Plugins.BasePlugin {
             }
 
             object.setTextKey = function (value) {
+                if (typeof value == "number") value = value.toString();
+
                 let _text = "";
                 if (Array.isArray(value)) {
                     for (const item of value) {
@@ -108,6 +110,8 @@ export default class TranslatePlugin extends Phaser.Plugins.BasePlugin {
     }
 
     getTranslate(key) {
+        if (typeof key == "number") key = value.toString();
+
         let result = key;
 
         const inputString = key;
